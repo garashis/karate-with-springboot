@@ -19,7 +19,7 @@ function fn() {
         throw 'Unknown environment [' + env + '].'
     }
     // don't waste time waiting for a connection or if servers don't respond within 0,3 seconds
-    karate.configure('connectTimeout', 300);
-    karate.configure('readTimeout', 300);
+    karate.configure('connectTimeout', 3000);
+    karate.configure('readTimeout', 3000);
     return config;
 }
