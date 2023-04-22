@@ -27,10 +27,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RootController {
-    private final MongoRepo mongoRepo;
+    private final MongoTemplateRepo mongoRepo;
 
-    public RootController(MongoRepo mongoRepo) {
+    public RootController(MongoTemplateRepo mongoRepo) {
         this.mongoRepo = mongoRepo;
+        mongoRepo.findByName();
         mongoRepo.findInArray();
     }
 
