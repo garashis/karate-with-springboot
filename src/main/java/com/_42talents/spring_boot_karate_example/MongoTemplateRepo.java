@@ -59,9 +59,9 @@ public class MongoTemplateRepo {
         Pageable pageRequest = PageRequest.of(0, 10);
         Page<Sales> salesPage;
         Date from = new Date(114, 11, 7);
-        Date to = new Date(114, 11, 8);
+        Date to = new Date(115, 0, 8);
         do {
-            salesPage = salesRepository.findSalesByDate(from.toInstant(), to.toInstant(), pageRequest);
+            salesPage = salesRepository.findSalesByDate("New York", from.toInstant(), to.toInstant(), pageRequest);
             System.out.println("--------------------------Page Number: " + salesPage.getNumber() + " total : " + salesPage.getTotalElements());
             salesPage.stream().forEach(restaurant -> System.out.println(restaurant.getStoreLocation()));
             pageRequest = pageRequest.next();
