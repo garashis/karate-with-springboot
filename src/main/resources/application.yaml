@@ -3,9 +3,15 @@ spring:
     name: Spring Boot Karate Example
   data:
     mongodb:
-      uri: mongodb://test:mwNx8apGEzT6poby@atlas-sql-60527d44375a9d700ef9e4b0-lltjl.a.query.mongodb.net/sample_restaurants?ssl=true&authSource=admin
-      database: sample_restaurants
+      #uri: mongodb://test:mwNx8apGEzT6poby@atlas-sql-60527d44375a9d700ef9e4b0-lltjl.a.query.mongodb.net/sample_restaurants?ssl=true&authSource=admin
+      uri: mongodb://test:mwNx8apGEzT6poby@atlas-sql-60527d44375a9d700ef9e4b0-lltjl.a.query.mongodb.net/?ssl=true&authSource=admin
+      database: sample_supplies
 
 logging:
   level:
     root: INFO
+    org:
+      mongodb:
+        driver:
+          protocol:
+            command: DEBUG

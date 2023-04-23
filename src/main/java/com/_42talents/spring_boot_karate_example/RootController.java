@@ -31,8 +31,9 @@ public class RootController {
 
     public RootController(MongoTemplateRepo mongoRepo) {
         this.mongoRepo = mongoRepo;
-        mongoRepo.findByPagination();
+        //mongoRepo.findByPagination();
         //mongoRepo.findInArray();
+        mongoRepo.findSales();
     }
 
     @GetMapping(path = "/{name}")

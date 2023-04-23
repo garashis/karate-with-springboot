@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -21,6 +22,8 @@ public class MongoTemplateRepo {
 
     @Autowired
     RestaurantRepository restaurantRepository;
+    @Autowired
+    SalesRepository salesRepository;
 
     public void find() {
         Query query = new Query(Criteria.where("name").is("Morris Park Bake Shop"));
@@ -51,4 +54,18 @@ public class MongoTemplateRepo {
         System.out.println("result size: " + result.size());
         result.forEach(r -> System.out.println(r.get("name")));
     }
+
+    public void findSales() {
+        Pageable pageRequest = PageRequest.of(0, 10);
+        Page<Sales> salesPage;
+        Date from = new Date(114, 11, 7);
+        Date to = new Date(114, 11, 8);
+        do {
+            salesPage = salesRepository.findSalesByDate(from.toInstant(), to.toInstant(), pageRequest);
+            System.out.println("--------------------------Page Number: " + salesPage.getNumber() + " total : " + salesPage.getTotalElements());
+            salesPage.stream().forEach(restaurant -> System.out.println(restaurant.getStoreLocation()));
+            pageRequest = pageRequest.next();
+        } while (!salesPage.isLast());
+    }
+
 }

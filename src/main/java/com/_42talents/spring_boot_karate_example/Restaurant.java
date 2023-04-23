@@ -6,23 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 import java.util.List;
 
-class $date {
-
-    @JsonProperty("$numberLong")
-    private String $numberLong;
-
-    @JsonProperty("$numberLong")
-    public String get$numberLong() {
-        return $numberLong;
-    }
-
-    @JsonProperty("$numberLong")
-    public void set$numberLong(String $numberLong) {
-        this.$numberLong = $numberLong;
-    }
-
-}
-
 class Address {
 
     @JsonProperty("building")

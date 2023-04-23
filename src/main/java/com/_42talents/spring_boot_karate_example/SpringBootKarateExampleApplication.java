@@ -27,7 +27,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SpringBootKarateExampleApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SpringBootKarateExampleApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringBootKarateExampleApplication.class, args);
+    }
 }
