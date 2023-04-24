@@ -21,6 +21,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
 package com._42talents.spring_boot_karate_example;
 
+import com._42talents.spring_boot_karate_example.repo.MongoTemplateBasedRepository;
+import com._42talents.spring_boot_karate_example.service.RootService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,12 +30,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class RootController {
     private final MongoTemplateBasedRepository mongoRepo;
+    private final RootService rootService;
 
-    public RootController(MongoTemplateBasedRepository mongoRepo) {
+    public RootController(MongoTemplateBasedRepository mongoRepo, RootService rootService) {
         this.mongoRepo = mongoRepo;
+        this.rootService = rootService;
         //mongoRepo.findByPagination();
         //mongoRepo.findInArray();
-        mongoRepo.findSales();
+        //mongoRepo.findSales();
+        rootService.getSales();
     }
 
     @GetMapping(path = "/{name}")

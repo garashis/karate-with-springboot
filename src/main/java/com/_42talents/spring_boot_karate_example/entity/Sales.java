@@ -1,4 +1,4 @@
-package com._42talents.spring_boot_karate_example;
+package com._42talents.spring_boot_karate_example.entity;
 
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;

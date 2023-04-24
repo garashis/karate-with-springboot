@@ -1,5 +1,7 @@
-package com._42talents.spring_boot_karate_example;
+package com._42talents.spring_boot_karate_example.repo;
 
+import com._42talents.spring_boot_karate_example.entity.Restaurant;
+import com._42talents.spring_boot_karate_example.entity.Sales;
 import org.bson.Document;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
