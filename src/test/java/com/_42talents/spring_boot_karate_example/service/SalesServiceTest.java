@@ -18,6 +18,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
+//https://tedvinke.wordpress.com/2020/06/22/mockito-cannot-instantiate-injectmocks-field-the-type-is-an-abstract-class/
 @ExtendWith(MockitoExtension.class)
 class SalesServiceTest {
     @Mock
