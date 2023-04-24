@@ -40,4 +40,14 @@ class SalesServiceTest {
                 .thenReturn(page);
         salesService.getSales();
     }
+
+    @Test
+    void getDefaultSales() {
+        Sales sales = new Sales();
+        sales.setStoreLocation("Test Location");
+        Page<Sales> page = new PageImpl<>(List.of(sales));
+        when(salesRepository.findSalesByDate(anyString(), any(Instant.class), any(Instant.class), any(Pageable.class)))
+                .thenReturn(page);
+        salesService.getDefaultSales();
+    }
 }
