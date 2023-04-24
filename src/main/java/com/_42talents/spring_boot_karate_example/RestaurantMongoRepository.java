@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.Query;
 
 import java.util.List;
 
-public interface RestaurantRepository extends MongoRepository<Restaurant, String> {
+public interface RestaurantMongoRepository extends MongoRepository<Restaurant, String> {
     @Query("{cuisine:'?0'}")
         //@Aggregation("{cuisine: '?0'},{$limit: ?1}")
     Page<Restaurant> findRestaurantByName(String cuisine, Pageable pageable);

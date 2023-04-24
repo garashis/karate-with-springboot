@@ -27,9 +27,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RootController {
-    private final MongoTemplateRepo mongoRepo;
+    private final MongoTemplateBasedRepository mongoRepo;
 
-    public RootController(MongoTemplateRepo mongoRepo) {
+    public RootController(MongoTemplateBasedRepository mongoRepo) {
         this.mongoRepo = mongoRepo;
         //mongoRepo.findByPagination();
         //mongoRepo.findInArray();

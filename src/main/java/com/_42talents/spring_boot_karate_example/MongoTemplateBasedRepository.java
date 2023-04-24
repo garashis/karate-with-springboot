@@ -1,7 +1,6 @@
 package com._42talents.spring_boot_karate_example;
 
 import org.bson.Document;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -15,15 +14,18 @@ import java.util.List;
 
 
 @Component
-public class MongoTemplateRepo {
+public class MongoTemplateBasedRepository {
 
-    @Autowired
-    MongoTemplate mongoTemplate;
+    private final MongoTemplate mongoTemplate;
 
-    @Autowired
-    RestaurantRepository restaurantRepository;
-    @Autowired
-    SalesRepository salesRepository;
+    private final RestaurantMongoRepository restaurantMongoRepository;
+    private final SalesRepository salesRepository;
+
+    public MongoTemplateBasedRepository(MongoTemplate mongoTemplate, RestaurantMongoRepository restaurantMongoRepository, SalesRepository salesRepository) {
+        this.mongoTemplate = mongoTemplate;
+        this.restaurantMongoRepository = restaurantMongoRepository;
+        this.salesRepository = salesRepository;
+    }
 
     public void find() {
         Query query = new Query(Criteria.where("name").is("Morris Park Bake Shop"));
@@ -35,7 +37,7 @@ public class MongoTemplateRepo {
         Pageable pageRequest = PageRequest.of(0, 10);
         Page<Restaurant> restaurantPage;
         do {
-            restaurantPage = restaurantRepository.findRestaurantByName("Hotdogs", pageRequest);
+            restaurantPage = restaurantMongoRepository.findRestaurantByName("Hotdogs", pageRequest);
             System.out.println("--------------------------Page Number: " + restaurantPage.getNumber() + " total : " + restaurantPage.getTotalElements());
             restaurantPage.stream().forEach(restaurant -> System.out.println(restaurant.getName()));
             pageRequest = pageRequest.next();
